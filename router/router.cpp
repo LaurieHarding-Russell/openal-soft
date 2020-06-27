@@ -1,5 +1,5 @@
 
-#include "config.h"
+// #include "config.h"
 
 #include "router.h"
 
@@ -11,8 +11,8 @@
 #include "AL/alc.h"
 #include "AL/al.h"
 
-#include "almalloc.h"
-#include "strutils.h"
+#include "common/almalloc.h"
+#include "common/strutils.h"
 
 #include "version.h"
 

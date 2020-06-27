@@ -1,5 +1,5 @@
 
-#include "config.h"
+// #include "config.h"
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -11,7 +11,7 @@
 #include <array>
 
 #include "AL/alc.h"
-#include "alstring.h"
+#include "common/alstring.h"
 #include "router.h"
 
 
