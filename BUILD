@@ -6,9 +6,7 @@ cc_binary(
         "examples/common/alhelpers.h"
     ],
     deps = [
-        "//:common",
         "//:al",
-        # "//:router", windows only
     ],
     includes = [
         "//test/regression:data"
@@ -51,7 +49,7 @@ cc_library(
     ],
     visibility = ["//visibility:public"]
 )
-
+# FIXME, only works on linux.
 cc_library(
     name = "al",
     srcs = glob(
