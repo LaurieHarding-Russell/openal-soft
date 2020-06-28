@@ -10,6 +10,8 @@
 #define RESTRICT __restrict
 #define HAVE_ALSA
 #define AL_ALEXT_PROTOTYPES
+#define HAVE_PTHREAD_SETNAME_NP
+#define DLFCN_H
 
 /* Define if HRTF data is embedded in the library */
 // #cmakedefine ALSOFT_EMBED_HRTF_DATA

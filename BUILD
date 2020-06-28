@@ -43,7 +43,7 @@ cc_library(
 
 cc_library(
     name = "common",
-    srcs = glob(["version.h", "config.h", "common/*.c"]),
+    srcs = glob(["version.h", "config.h", "common/*.c", "common/*.cpp"]),
     hdrs = glob(["common/*.h"]),
     includes = ["common"],
     deps = [
@@ -85,6 +85,11 @@ cc_library(
     deps = [
         "//:includes",
         "//:common",
+    ],
+    linkopts = [
+        "-lsndfile",
+        "-lpthread",
+        "-lasound",
     ],
     includes = ["alc"],
     visibility = ["//visibility:public"]
