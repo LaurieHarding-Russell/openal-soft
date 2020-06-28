@@ -6,10 +6,8 @@ cc_binary(
         "examples/common/alhelpers.h"
     ],
     deps = [
-        "//:headers",
         "//:common",
         "//:al",
-        "//:alc",
         # "//:router", windows only
     ],
     includes = [
@@ -45,23 +43,56 @@ cc_library(
 
 cc_library(
     name = "common",
-    srcs = glob(["common/*.c"]),
+    srcs = glob(["version.h", "config.h", "common/*.c"]),
     hdrs = glob(["common/*.h"]),
+    includes = ["common"],
+    deps = [
+        "//:headers",
+    ],
     visibility = ["//visibility:public"]
 )
 
 cc_library(
     name = "al",
-    srcs = glob(["al/**/*.c"]),
-    hdrs = glob(["al/**/*.h"]),
+    srcs = glob(
+        [
+            "al/*.cpp", 
+            "alc/*.cpp", 
+            "alc/**/*.cpp"
+        ],
+        exclude = [
+            "alc/backends/dsound.cpp",
+            "alc/backends/jack.cpp",
+            "alc/backends/winmm.cpp",
+            "alc/backends/wasapi.cpp",
+            "alc/backends/solaris.cpp",
+            "alc/backends/portaudio.cpp",
+            "alc/backends/sdl2.cpp",
+            "alc/backends/sndio.cpp",
+            "alc/backends/opensl.cpp",
+            "alc/backends/oboe.cpp",
+            "alc/backends/coreaudio.cpp",
+            "alc/mixer/mixer_neon.cpp",
+        ]
+    ),
+    hdrs = glob(
+        [
+            "al/*.h", 
+            "alc/*.h", 
+            "alc/**/*.h"
+        ],
+    ),
+    deps = [
+        "//:includes",
+        "//:common",
+    ],
+    includes = ["alc"],
     visibility = ["//visibility:public"]
 )
 
 cc_library(
-    name = "alc",
-    srcs = glob(["alc/**/*.c"]),
-    hdrs = glob(["alc/**/*.h"]),
-    visibility = ["//visibility:public"]
+    name = "includes",
+    srcs = glob(["include/AL/*.h"]),
 )
 
 # cc_library(
