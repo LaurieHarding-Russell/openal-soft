@@ -1,18 +1,3 @@
-cc_binary(
-    name = "alplay",
-    srcs = [
-        "examples/alplay.c",
-        "examples/common/alhelpers.c",
-        "examples/common/alhelpers.h"
-    ],
-    deps = [
-        "//:al",
-    ],
-    includes = [
-        "//test/regression:data"
-    ]
-)
-
 cc_library(
   name = "headers",
   hdrs = glob(["include/*.h"]),
