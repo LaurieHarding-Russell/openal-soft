@@ -1,3 +1,4 @@
+# bazel run //examples:alplay -- ~/bla.wav
 cc_binary(
     name = "alplay",
     srcs = [
@@ -17,12 +18,11 @@ cc_binary(
 cc_binary(
     name = "alrecord",
     srcs = [
-        "alrecord.c",
-        "common/alhelpers.c",
-        "common/alhelpers.h"
+        "alrecord.c"
     ],
     deps = [
         "//:al",
+        ":alhelpers"
     ],
     includes = [
         "//test/regression:data"
@@ -42,4 +42,13 @@ cc_binary(
     includes = [
         "//test/regression:data"
     ]
+)
+
+cc_library(
+    name = "alhelpers",
+    srcs = [
+        "common/alhelpers.c",
+        "common/alhelpers.h"
+    ],
+    visibility = ["//visibility:public"]
 )
